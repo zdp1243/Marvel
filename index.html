@@ -9,15 +9,14 @@
     <!-- Bootstrap CDN-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
     <!--Ajax-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 
     <!-- Firebase Reference -->
     <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
@@ -60,27 +59,12 @@
 
                         <form>
                             <div class="form-row">
-                                <div class="col">
-                                    <input type="text" class="form-control" id="character-search" placeholder="Search Character Name">
-                                </div>
-                                <div class="col">
-                                    <input type="text" class="form-control" placeholder="Search Issue Number">
-                                </div>
-                                <div class="col">
-                                    <input type="text" class="form-control" placeholder="Search Title">
-                                </div>
-                                <div class="col">
-                                    <input type="text" class="form-control" placeholder="Search Year">
+                                <div class="col-md-6 mb-3">
+                                    <input type="text" class="form-control" placeholder="Search">
                                 </div>
                             </div>
                             <br>
-                            <button type="submit" class="btn btn-danger">Search</button>
-                        </form>
-                        <br>
-                        <br>
-                        <br>
-                        <!--OR perhaps something more streamlined?  This is a dropdown form-->
-                        <form>
+                            <!--OR perhaps something more streamlined?  This is a dropdown form-->
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
                                     <label class="mr-sm-2" for="search-by">Search By:</label>
@@ -96,31 +80,31 @@
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-2">
                                     <div class="custom-control custom-checkbox mr-sm-2">
-                                        <input type="checkbox" class="custom-control-input" id="search-five">
-                                        <label class="custom-control-label" for="search-five">Top 5 Searches</label>
+                                        <input type="checkbox" class="custom-control-input" id="results-five">
+                                        <label class="custom-control-label" for="results-five">Top 5 Searches</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-2">
                                     <div class="custom-control custom-checkbox mr-sm-2">
-                                        <input type="checkbox" class="custom-control-input" id="search-ten">
-                                        <label class="custom-control-label" for="search-ten">Top 10 Searches</label>
+                                        <input type="checkbox" class="custom-control-input" id="results-ten">
+                                        <label class="custom-control-label" for="results-ten">Top 10 Searches</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-2">
                                     <div class="custom-control custom-checkbox mr-sm-2">
-                                        <input type="checkbox" class="custom-control-input" id="search-twenty">
-                                        <label class="custom-control-label" for="search-twenty">Top 20 Searches</label>
+                                        <input type="checkbox" class="custom-control-input" id="results-twenty">
+                                        <label class="custom-control-label" for="results-twentu">Top 20 Searches</label>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-3">
-                                    <button type="submit" class="btn btn-danger" id="search-button">Search</button>
+                                    <button class="btn btn-danger" id="search-button">Search</button>
                                 </div>
                             </div>
                     </div>
