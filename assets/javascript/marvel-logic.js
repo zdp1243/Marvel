@@ -40,12 +40,19 @@ $(document).ready(function () {
 
 function characterSearch(name) {
     var characterName = name;
-    searchURL = "https://gateway.marvel.com:443/v1/public/characters?name=" + characterName + "&apikey=c6ddf149200862b50983d1633446c0f7"
+    searchURL = "https://gateway.marvel.com:443/v1/public/characters?name=" + characterName + "&apikey=c6ddf149200862b50983d1633446c0f7&ts=1&hash=ddc450734c99a083d33d41a3baea4e59"
     console.log(searchURL);
+
     $.ajax({
         url : searchURL,
-        method : "GET"
+        method : "GET",
+        error : function(thing, secondThing, thirdThing) {
+            console.log(thing);
+            console.log(secondThing);
+            console.log(thirdThing);
+        }
     }).then(function(response) {
         console.log(response);
+        $("#thumbnail-image").attr("src", response.data.results[0].thumbnail.path + ".jpg");
     });
 };
