@@ -54,5 +54,6 @@ function characterSearch(name) {
     }).then(function(response) {
         console.log(response);
         $("#thumbnail-image").attr("src", response.data.results[0].thumbnail.path + ".jpg");
+        $("#thumbnail-link").attr("href", response.data.results[0].urls[1].url);
     });
 };
