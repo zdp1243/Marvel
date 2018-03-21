@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Bands In Town</title>
+</head>
+
+<body>
+
+    <!-- Artist Select Box -->
+    <form id="artist-form">
+
+        <!-- Label for Text Box -->
+        <label for="artist-input">Search for a Comic Book Event</label>
+
+        <!-- Text Input Box -->
+        <input type="text" id="artist-input">
+        <br>
+
+        <!-- Submit Button -->
+        <input id="select-artist" type="submit" value="GO!">
+    </form>
+
+    <!-- Artist Information -->
+    <div id="artist-div"></div>
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    function comicEvents(comicEvent) {
+
+        // Querying the EventBite api to allow a user to search for comic magazine events
+
+        //https://www.eventbriteapi.com/v3/events/:id/?token={Q5353UIQE3SLBD5OZC}
+
+        //var queryURL = "https://eventbriteapi.com/v3/events/search/" + event + "?token=Q5353UIQE3SLBD5OZC";
+        //var queryURL = "https://www.eventbriteapi.com/v3/events/search/?q=t&token=Q5353UIQE3SLBD5OZC";
+        var queryURL = "https://www.eventbriteapi.com/v3/events/search/?q=t&token=RYLM43ARMF7VKZ57B3RJ";
+        jQuery.ajaxPrefilter(function (options) {
+            if (options.crossDomain && jQuery.support.cors) {
+                options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+            }
+        });
+
+
+        $.ajax({
+
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            //OATH TOken RYLM43ARMF7VKZ57B3RJ
+            // Printing the entire object to console
+            console.log(response);
+            var events = response.events;
+            for (var i = 0; i < 10; i++) {
+                // Constructing HTML containing the artist information
+                var eventName = $("<h1>").text(events[i].name.text);
+                var eventURL = $("<a>").attr("href", events[i].url).append(eventName);
+                var eventImage = $("<img>").attr("src", events[i].logo.original.url);
+                var eventDesc = $("<h2>").text(events[i].description.text);
+                var eventStart = $("<h2>").text(events[i].start.local, events[i].start.timezone);
+                var eventEnd = $("<h2>").text(events[i].end.local, events[i].end.timezone);
+                var eventStatus = $("<h2>").text(events[i].status + "Event Status");
+                //var eventVenue = $("<a>").attr("href", response.event.venue).text("Venue");
+
+                // Empty the contents of the artist-div, append the new artist content
+                $("#artist-div").empty();
+                //$('#artist-div').append(eventName, eventDesc);
+                $("#artist-div").append(eventURL, eventImage, eventDesc, eventStart, eventEnd, eventStatus, );
+            }
+        });
+    }
+    comicEvents();
+    // Event handler for user clicking the select-artist button
+    $("#select-artist").on("click", function (event) {
+        // Preventing the button from trying to submit the form
+        event.preventDefault();
+        // Storing the artist name
+        var inputEvent = $("#artist-input").val().trim();
+
+        // Running the searchcomicEvents function (passing in the artist as an argument)
+        comicEvents(inputEvent);
+    });
+</script>
+
+</html>
