@@ -34,6 +34,7 @@
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
+
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -91,7 +92,9 @@
                 var eventName = $("<h1>").text(name ? name.text : "");
                 var eventURL = $("<a>").attr("href", url ? url : "").append(eventName);
 
-                var eventImage = $("<img>").attr({ src: logo ? logo.original.url : "", width: "150", height: "150", "text-align": 'center' });
+                var eventImage = $("<img>").attr({ src: logo ? logo.original.url : "", align: "middle", style: "float-inherit", clear: "left", width: "175px", height: "175px" });
+
+
                 var eventDesc = $("<h7>").text(description ? description.text : "");
                 var eventStart = $("<h2>").text(start.local, start.timezone);
                 var eventEnd = $("<h2>").text(end.local, end.timezone);
