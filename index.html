@@ -9,11 +9,15 @@
     <!-- Bootstrap CDN-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/zoomove/1.2.1/zoomove.min.css">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/zoomove/1.2.1/zoomove.min.js"></script>
+
 
     <!--Ajax-->
 
@@ -21,8 +25,7 @@
     <!-- Firebase Reference -->
     <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
 
-    <!--Momentjs CDN (Just in case we need it, otherwise, delete)-->
-    <!--<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
     <!--Javascript -->
     <script type="text/javascript" src="assets/javascript/marvel-logic.js"></script>
@@ -131,8 +134,12 @@
                                     <img id="thumbnail-image" src="http://via.placeholder.com/450x550">
 
                                 </a>
-
                                 <p>Here is a place to write the copyright info for the image if we choose.</p>
+                                <span id="Data-synopsis">
+                                    <p id="synopsis-text">
+                                        Here is where the synopsis will go.
+                                    </p>
+                                </span>
                             </div>
 
                         </div>
@@ -158,13 +165,9 @@
                                                     <span id="Title"></span>Title</th>
                                                 <th>
                                                     <span id="Year"></span> Year</th>
-                                                <th>
-                                                    <span id="Own"></span>Own Issue</th>
-                                                <th>
-                                                    <span id="Want"></span>Want Issue</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="comic-table">
                                             <tr>
                                                 <td>
                                                     <span id="Data-Name"></span>
@@ -178,45 +181,11 @@
                                                 <td>
                                                     <span id="Data-Year"></span>
                                                 </td>
-                                                <td>
-
-                                                    <span id="Data-OwnCheck">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-                                                        </div>
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <span id="Data-WantCheck">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option2" aria-label="...">
-                                                        </div>
-                                                    </span>
-                                                </td>
 
                                             </tr>
 
                                         </tbody>
                                     </table>
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>
-                                                    <span id="Synopsis">Synopsis</span>
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <span id="Data-synopsis">
-                                                        <p>
-                                                            Here is where the synopsis will go.
-                                                        </p>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                        </tbody>
                                 </div>
                             </div>
                         </div>
