@@ -22,6 +22,13 @@
         .articleHeadline {
             line-height: 1.5;
         }
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 40%;
+        }
     </style>
 </head>
 
@@ -92,7 +99,7 @@
                 var eventName = $("<h1>").text(name ? name.text : "");
                 var eventURL = $("<a>").attr("href", url ? url : "").append(eventName);
 
-                var eventImage = $("<img>").attr({ src: logo ? logo.original.url : "", align: "middle", style: "float-inherit", clear: "left", width: "175px", height: "175px" });
+                var eventImage = $("<img>").attr({ src: logo ? logo.original.url : "", style: "float-left", clear: "left", width: "175px", height: "175px" });
 
 
                 var eventDesc = $("<h7>").text(description ? description.text : "");
@@ -101,7 +108,7 @@
                 var eventStatus = $("<h2>").text(status ? status : "" + "Event Status");
                 //var eventVenue = $("<a>").attr("href", response.event.venue).text("Venue");
 
-
+                $("img").attr("align", "center");
 
                 // Empty the contents of the artist-div, text the new artist content
                 //$("#artist-div").empty();
