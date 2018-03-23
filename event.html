@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Event Brite</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/flatly/bootstrap.min.css">
+
+    <style>
+        .panel-body a {
+            word-break: break-all;
+        }
+
+        .articleHeadline {
+            line-height: 1.5;
+        }
+
+        .modal fade.active {
+            visibility: visible;
+        }
+
+        .modal-content.active {
+            visibility: visible;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light justify-content-between">
+        <a class="navbar-brand">Marvel Comic Fan Page</a>
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search-input">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" data-toggle="modal" id="submit-button">Search for ComicCon Events</button>
+        </form>
+    </nav>
+
+    <div class="container">
+        <div class="jumbotron" style="background-color: rgb(209, 42, 42); color: white;">
+            <h1 class="text-center">
+                <strong>
+                    <i class="fa fa-newspaper-o"></i> Event Brite Search</strong>
+            </h1>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <br>
+
+                <!--  <div class="panel panel-primary">
+                    <div class="panel-heading" style="background-color:rgb(209, 42, 42); color: white;">
+                        <h3 class="panel-title">
+                            <strong>
+                                <i class="fa fa-list-alt"></i>Search</strong>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form">
+                            <dif class="form-group">
+                                <label for="search">Search events: </label>
+                                <input type="text" class="form-control" id="search-event">
+                            </dif>
+
+                            <button type="submit" class="btn btn-default" id="event-submit">
+                                <i class="fa fa-search"></i>Search</button>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+     
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <br>
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="background-color:rgb(209, 42, 42); color: white;">
+                    <h3 class="panel-tital">
+                        <strong>
+                            <i class="fa fa-table"></i>Results</strong>
+                    </h3>
+                </div>
+                <div class="panel-body" id="well-section">
+                    <!-- Button trigger modal -->
+                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                        Launch demo modal
+                    </button>
+
+                    Modal
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    ...
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button> -->
+
+                <!-- Button trigger modal -->
+                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                    Launch demo modal
+                </button> -->
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true"
+                    id="myModal">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Upcoming Events</h5>
+                                <button type="button" class="close" data-toggle="modal" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-toggle="modal" data-dismiss="modal" id="button-close">Close</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <div cladd="row">
+        <div class="col-sm-12">
+            <hr>
+            <h5 class="text-center">
+                <small> copyrite
+                    <i class="fa fa-heart"></i>
+                </small>
+            </h5>
+
+        </div>
+    </div>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        function comicEvents(comicEvent) {
+
+            // Querying the EventBite api to allow a user to search for comic magazine events
+
+            //https://www.eventbriteapi.com/v3/events/:id/?token={Q5353UIQE3SLBD5OZC}
+
+            //var queryURL = "https://eventbriteapi.com/v3/events/search/" + event + "?token=Q5353UIQE3SLBD5OZC";
+            //var queryURL = "https://www.eventbriteapi.com/v3/events/search/?q=t&token=Q5353UIQE3SLBD5OZC";
+            var queryURL = "https://www.eventbriteapi.com/v3/events/search/?q=" + comicEvent + "&token=RYLM43ARMF7VKZ57B3RJ";
+            jQuery.ajaxPrefilter(function (options) {
+                if (options.crossDomain && jQuery.support.cors) {
+                    options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+                }
+            });
+
+
+            $.ajax({
+
+                url: queryURL,
+                method: "GET"
+            }).then(function (response) {
+
+                $(".modal-body").empty();
+                //OATH TOken RYLM43ARMF7VKZ57B3RJ
+                // Printing the entire object to console
+                console.log(response);
+                var events = response.events;
+                for (var i = 0; i < 10; i++) {
+
+                    var { name, url, logo, description, start, end, status } = response.events[i];
+                    // Creating a div to hold the gif
+                    var containerDiv = $("<div class='containerDiv'>");
+                    // Constructing HTML containing the artist information
+                    var eventName = $("<h1>").text(name ? name.text : "");
+                    var eventURL = $("<a>").attr("href", url ? url : "").append(eventName);
+
+                    var eventImage = $("<img>").attr("src", logo ? logo.original.url : "");
+                    var eventDesc = $("<h2>").text(description ? description.text : "");
+                    var eventStart = $("<h2>").text(start.local, start.timezone);
+                    var eventEnd = $("<h2>").text(end.local, end.timezone);
+                    var eventStatus = $("<h2>").text(status ? status : "" + "Event Status");
+                    //var eventVenue = $("<a>").attr("href", response.event.venue).text("Venue");
+                    /*  var randomStart = eventStart;
+                      var randomStart = eventStart;
+                      var randomFormat = "MM/DD/YYYY";
+                      var convertedStart = moment(randomStart, randomFormat);
+                      var convertedEnd = moment(randomEnd, randomFormat);
+  
+  
+                      moment(convertedStart).format("MMM Do, YYYY hh:mm:ss");
+                      moment(convertedEnd).format("MMM Do, YYYY hh:mm:ss"); */
+
+
+                    // Empty the contents of the artist-div, text the new artist content
+                    //$("#artist-div").empty();
+                    //$('#artist-div').text(eventName, eventDesc);
+                    $(".modal-body").append(eventName, eventURL, eventImage, eventDesc, eventStart, eventEnd, eventStatus, );
+                }
+            });
+        }
+        //comicEvents();
+        // Event handler for user clicking the submit button
+        $("#submit-button").on("click", function (event) {
+
+            $('#myModal').modal('show');
+            // Preventing the button from trying to submit the form
+            event.preventDefault();
+            // Storing the user entry
+            var inputEvent = $("#search-input").val().trim();
+
+
+            // Running the searchcomicEvents function (passing in the artist as an argument)
+            comicEvents(inputEvent);
+
+        });
+
+        $("#button-close").on("click", function () {
+            // Preventing the button from trying to submit the form
+            event.preventDefault();
+            $('#myModal').modal('hide');
+
+        });
+
+
+
+    </script>
+</body>
+
+</html>
