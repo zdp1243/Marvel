@@ -22,70 +22,51 @@
         .articleHeadline {
             line-height: 1.5;
         }
-
-        .modal fade.active {
-            visibility: visible;
-        }
-
-        .modal-content.active {
-            visibility: visible;
-        }
     </style>
 </head>
 
 <body>
+    <!--
     <nav class="navbar navbar-light bg-light justify-content-between">
         <a class="navbar-brand">Marvel Comic Fan Page</a>
         <form class="form-inline">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search-input">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" data-toggle="modal" id="submit-button">Search for ComicCon Events</button>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" data-toggle="modal" id="submit-button" data-target="myModal">Search for ComicCon Events</button>
         </form>
-    </nav>
-
-    <div class="container">
-        <div class="jumbotron" style="background-color: rgb(209, 42, 42); color: white;">
-            <h1 class="text-center">
-                <strong>
-                    <i class="fa fa-newspaper-o"></i> Event Brite Search</strong>
-            </h1>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-12">
-                <br>
+    </nav>-->
 
 
-                <!-- Modal -->
-                <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" id="myModal">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Upcoming Events</h5>
-                                <button type="button" class="close" data-toggle="modal" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-toggle="modal" data-dismiss="modal" id="button-close">Close</button>
 
-                            </div>
-                        </div>
+
+    <form class="form-inline">
+
+        <!-- Button trigger modal -->
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search-input">
+        <button class="button" type="submit" data-toggle="modal" id="submit-button" data-target="myModal">Search for ComicCon Events</button>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
-
-
-
             </div>
         </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
+
+    </form>
 
     <div cladd="row">
         <div class="col-sm-12">
@@ -102,7 +83,7 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-/*        function comicEvents(comicEvent) {
+        function comicEvents(comicEvent) {
 
             // Querying the EventBite api to allow a user to search for comic magazine events
 
@@ -144,21 +125,13 @@
                     var eventEnd = $("<h2>").text(end.local, end.timezone);
                     var eventStatus = $("<h2>").text(status ? status : "" + "Event Status");
                     //var eventVenue = $("<a>").attr("href", response.event.venue).text("Venue");
-                    /*  var randomStart = eventStart;
-                      var randomStart = eventStart;
-                      var randomFormat = "MM/DD/YYYY";
-                      var convertedStart = moment(randomStart, randomFormat);
-                      var convertedEnd = moment(randomEnd, randomFormat);
-  
-  
-                      moment(convertedStart).format("MMM Do, YYYY hh:mm:ss");
-                      moment(convertedEnd).format("MMM Do, YYYY hh:mm:ss"); */
+
 
 
                     // Empty the contents of the artist-div, text the new artist content
                     //$("#artist-div").empty();
                     //$('#artist-div').text(eventName, eventDesc);
-            /*        $(".modal-body").append(eventName, eventURL, eventImage, eventDesc, eventStart, eventEnd, eventStatus, );
+                    $(".modal-body").append(eventName, eventURL, eventImage, eventDesc, eventStart, eventEnd, eventStatus, );
                 }
             });
         }
@@ -166,7 +139,7 @@
         // Event handler for user clicking the submit button
         $("#submit-button").on("click", function (event) {
 
-            $('#myModal').modal('show');
+            //$('#myModal').modal('show');
             // Preventing the button from trying to submit the form
             event.preventDefault();
             // Storing the user entry
@@ -181,7 +154,7 @@
         $("#button-close").on("click", function () {
             // Preventing the button from trying to submit the form
             event.preventDefault();
-            $('#myModal').modal('hide');
+            //$('#myModal').modal('hide');
 
         });
 
