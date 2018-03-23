@@ -61,7 +61,7 @@
                 // Creating a div to hold the gif
                 var containerDiv = $("<div class='containerDiv'>");
                 // Constructing HTML containing the artist information
-                var eventName = $("<h1>").text(name.text);
+                var eventName = $("<h1>").text(name ? name.text : "");
                 var eventURL = $("<a>").attr("href", url).append(eventName);
 
                 var eventImage = $("<img>").attr("src", logo ? logo.original.url : "");
@@ -70,6 +70,16 @@
                 var eventEnd = $("<h2>").text(end.local, end.timezone);
                 var eventStatus = $("<h2>").text(status ? status : "" + "Event Status");
                 //var eventVenue = $("<a>").attr("href", response.event.venue).text("Venue");
+                var randomStart = eventStart;
+                var randomStart = eventStart;
+                var randomFormat = "MM/DD/YYYY";
+                var convertedStart = moment(randomStart, randomFormat);
+                var convertedEnd = moment(randomEnd, randomFormat);
+
+
+                moment(convertedStart).format("MMM Do, YYYY hh:mm:ss");
+                moment(convertedEnd).format("MMM Do, YYYY hh:mm:ss");
+
 
                 // Empty the contents of the artist-div, text the new artist content
                 //$("#artist-div").empty();
