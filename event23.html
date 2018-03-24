@@ -14,6 +14,7 @@
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <style>
         .panel-body a {
             word-break: break-all;
@@ -41,7 +42,7 @@
 
     <!-- Modal -->
     <!-- modal needs to be set to false-->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
+    <div class="modal fade" id="exampleModalCenter" tabindex="-5" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
 
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -99,13 +100,14 @@
                 var eventURL = $("<a>").attr("href", url ? url : "").append(eventName);
                 var eventImage = $("<img>").attr({ src: logo ? logo.original.url : "", style: "float-left", clear: "left", width: "175px", height: "175px" });
                 var eventDesc = $("<h7>").text(description ? description.text : "");
-                var eventStart = $("<h2>").text(start.local, start.timezone);
-                var eventEnd = $("<h2>").text(end.local, end.timezone);
-                var eventStatus = $("<h2>").text(status ? status : "" + "Event Status");
+                var eventStart = $("<h2>").text((moment(start.local).format("LLL")), start.timezone);
+                var eventEnd = $("<h2>").text((moment(end.local).format("LLL")), end.timezone);
+                var eventStatus = $("<h2>").text("Event Type:" + status ? status : "");
                 //var eventVenue = $("<a>").attr("href", response.event.venue).text("Venue");
                 //align image to center
                 $("img").attr("align", "center");
-
+                $("h2").attr("align", "left");
+                $("h1").attr("align", "center");
                 //append varibles to modal    
                 $(".modal-body").append(eventName, eventURL, eventImage, eventDesc, eventStart, eventEnd, eventStatus, );
             }
