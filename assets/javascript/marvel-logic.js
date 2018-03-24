@@ -66,7 +66,7 @@ function characterSearch(name) {
                 charID = child.val().ID;
                 charURL = child.val().URL;
                 charThumb = child.val().thumbnail;
-                charDescription = child.val()
+                charDescription = child.val().description;
                 $("#thumbnail-image").attr("data-zoo-image", charThumb + ".jpg");
                 $('.zoo-item').ZooMove();
                 $("#thumbnail-link").attr("href", charURL);
