@@ -18,6 +18,9 @@ $(document).ready(function () {
         event.preventDefault();
         var searchType = $("#search-by").val();
         var searchParameter = $("#search-text").val()
+        var numResults = $('input[name=results]:checked').val();
+        console.log(numResults);
+
         console.log(searchType);
         console.log(searchParameter);
 
