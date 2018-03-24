@@ -16,11 +16,7 @@
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/zoomove/1.2.1/zoomove.min.js"></script>
-
-
-    <!--Ajax-->
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zoomove/1.2.1/zoomove.min.js"></script>
 
     <!-- Firebase Reference -->
     <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
@@ -131,8 +127,7 @@
                             </div>
                             <div id="image">
                                 <a id="thumbnail-link" href="https://placeholder.com">
-                                    <img id="thumbnail-image" src="http://via.placeholder.com/450x550">
-
+                                    <figure id="thumbnail-image" class="zoo-item" data-zoo-image="http://via.placeholder.com/450x550" data-zoo-over="true" data-zoo-move="false" style="width:450px;height:550px;position:relative;"></figure>
                                 </a>
                                 <p>Here is a place to write the copyright info for the image if we choose.</p>
                                 <span id="Data-synopsis">
@@ -193,25 +188,27 @@
                     </div>
                     <div class="modal" tabindex="-1" role="dialog" id="search-modal">
                         <div class="modal-dialog" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title">Invalid Search</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Invalid Search</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Please select a search type.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
                             </div>
-                            <div class="modal-body">
-                              <p>Please select a search type.</p>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            </div>
-                          </div>
                         </div>
-                      </div>
+                    </div>
                 </div>
-            
 
+                <script>
+                    $('.zoo-item').ZooMove();
+                 </script>
 </body>
 
 </html>

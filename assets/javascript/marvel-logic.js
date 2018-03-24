@@ -42,7 +42,8 @@ $(document).on("click", ".comicData", function () {
     var thumblink = $(this).attr("data-thumbnail");
     var link = $(this).attr("data-url");
     $("#synopsis-text").text(synopsis);
-    $("#thumbnail-image").attr("src", thumblink);
+    $("#thumbnail-image").attr("data-zoo-image", thumblink);
+    $('.zoo-item').ZooMove();
     $("#thumbnail-link").attr("href", link);
 })
 
@@ -66,7 +67,8 @@ function characterSearch(name) {
                 charURL = child.val().URL;
                 charThumb = child.val().thumbnail;
                 charDescription = child.val()
-                $("#thumbnail-image").attr("src", charThumb + ".jpg");
+                $("#thumbnail-image").attr("data-zoo-image", charThumb + ".jpg");
+                $('.zoo-item').ZooMove();
                 $("#thumbnail-link").attr("href", charURL);
                 $("#synopsis-text").text(charDescription);
 
@@ -94,7 +96,8 @@ function characterSearch(name) {
                 method: "GET"
             }).then(function (response) {
                 console.log(response);
-                $("#thumbnail-image").attr("src", response.data.results[0].thumbnail.path + ".jpg");
+                $("#thumbnail-image").attr("data-zoo-image", response.data.results[0].thumbnail.path + ".jpg");
+                $('.zoo-item').ZooMove();
                 $("#thumbnail-link").attr("href", response.data.results[0].urls[1].url);
                 $("#synopsis-text").text(response.data.results[0].description);
                 charID = response.data.results[0].id;
