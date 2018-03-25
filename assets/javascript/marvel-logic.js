@@ -13,33 +13,32 @@ var database = firebase.database();
 
 $(document).ready(function () {
 
+    //Submits search type, the input to be searched, and the number of desired results to selected search function on #search-button click
     $("#search-button").on("click", function (event) {
 
         event.preventDefault();
         var searchType = $("#search-by").val();
-        var searchParameter = $("#search-text").val()
+        var searchParameter = $("#search-text").val().trim();
         var numResults = $('input[name=results]:checked').val();
-        console.log(numResults);
 
-        console.log(searchType);
-        console.log(searchParameter);
-
+        //selects search function based on dropdown menu value captured above
         if (searchType == "Choose...") {
             $("#search-modal").modal();
         } else if (searchType == 1) {
-            characterSearch(searchParameter);
+            characterSearch(searchParameter, numResults);
         } else if (searchType == 2) {
-            issueSearch(searchParameter);
+            issueSearch(searchParameter, numResults);
         } else if (searchType == 3) {
-            titleSearch(searchParameter);
+            titleSearch(searchParameter, numResults);
         } else if (searchType == 4) {
-            yearSearch(searchParameter);
+            yearSearch(searchParameter, numResults);
         }
 
     });
 
 });
 
+//Listens for clicks on results table, displays thumbnail and synopsis of clicked on result
 $(document).on("click", ".comicData", function () {
     var synopsis = $(this).attr("data-synopsis");
     var thumblink = $(this).attr("data-thumbnail");
@@ -50,7 +49,8 @@ $(document).on("click", ".comicData", function () {
     $("#thumbnail-link").attr("href", link);
 })
 
-function characterSearch(name) {
+//Searches by passed character name
+function characterSearch(name, numResults) {
     var characterName = name;
     var firstSearchURL = "https://gateway.marvel.com:443/v1/public/characters?name=" + characterName + "&apikey=c6ddf149200862b50983d1633446c0f7&ts=" + 1 + "&hash=ddc450734c99a083d33d41a3baea4e59"
     var inDatabase = false;
@@ -59,6 +59,7 @@ function characterSearch(name) {
     var charThumb;
     var charDescription
 
+    //As Marvel API calls are limited by day, this checks to see if its a character that has been searched for before and pulls relevant information from data stored in Firebase
     database.ref("characters").once("value").then(function (snapshot) {
 
         snapshot.forEach(function (child) {
@@ -86,13 +87,15 @@ function characterSearch(name) {
                     }
                 }).then(function (response) {
                     console.log(response.data.results);
-                    displayComics(response.data.results, characterName)
+                    displayComics(response.data.results, numResults)
                 })
 
                 return true;
             }
             
         });
+
+        //Alternatively, if the character has not been searched for before this will submit one ajax request to the Marvel API to get and store the characters information for future searches
         if (!inDatabase) {
             $.ajax({
                 url: firstSearchURL,
@@ -107,7 +110,8 @@ function characterSearch(name) {
                 database.ref("characters").push({ characterName: response.data.results[0].name, ID: charID, thumbnail: response.data.results[0].thumbnail.path, 
                     URL: response.data.results[0].urls[1].url, description : response.data.results[0].description });
                 var secondSearchURL = "https://gateway.marvel.com:443/v1/public/characters/" + charID + "/comics?apikey=c6ddf149200862b50983d1633446c0f7&ts=" + 1 + "&hash=ddc450734c99a083d33d41a3baea4e59"
-
+                
+                //Once the characters information has been received and stored, this second ajax request will get a list of comics related to that character
                 $.ajax({
                     url: secondSearchURL,
                     method: "GET",
@@ -118,7 +122,7 @@ function characterSearch(name) {
                     }
                 }).then(function (response) {
                     console.log(response.data.results);
-                    displayComics(response.data.results, characterName);
+                    displayComics(response.data.results, numResults);
                 })
             });
         }
@@ -126,7 +130,8 @@ function characterSearch(name) {
 
 };
 
-function issueSearch(issue) {
+//Searches for comics based on the given issue number
+function issueSearch(issue, numResults) {
     var searchIssue = issue;
     var issueURL = "https://gateway.marvel.com:443/v1/public/comics?issueNumber=" + searchIssue + "&apikey=c6ddf149200862b50983d1633446c0f7&ts=" + 1 + "&hash=ddc450734c99a083d33d41a3baea4e59"
 
@@ -134,11 +139,12 @@ function issueSearch(issue) {
         url: issueURL,
         method: "GET"
     }).then(function (response) {
-        displayComics(response.data.results);
+        displayComics(response.data.results, numResults);
     });
 }
 
-function yearSearch(year) {
+//Searches for comics based on the given year
+function yearSearch(year, numResults) {
     var yearSearch = year
     var yearURL = "https://gateway.marvel.com:443/v1/public/comics?startYear=" + yearSearch + "&apikey=c6ddf149200862b50983d1633446c0f7&ts=" + 1 + "&hash=ddc450734c99a083d33d41a3baea4e59"
     console.log("searching by year");  
@@ -146,11 +152,12 @@ function yearSearch(year) {
         url : yearURL,
         method : "GET"
     }).then(function(response) {
-        displayComics(response.data.results);
+        displayComics(response.data.results, numResults);
     })
 }
 
-function titleSearch(title) {
+//Searches for comics mathcing in whole or in part the given title
+function titleSearch(title, numResults) {
     var titleSearch = title;
     var titleURL = "https://gateway.marvel.com:443/v1/public/comics?title=" + titleSearch + "&apikey=c6ddf149200862b50983d1633446c0f7&ts=" + 1 + "&hash=ddc450734c99a083d33d41a3baea4e59"
 
@@ -158,14 +165,15 @@ function titleSearch(title) {
         url : titleURL,
         method : "GET"
     }).then(function(response) {
-        displayComics(response.data.results);
+        displayComics(response.data.results, numResults);
     })
 }
 
-function displayComics(comics) {
+//Accepts the results of the above search functions and the max number of results to be displayed and then populates the search table with their results
+function displayComics(comics, numResults) {
     $("#comic-table").empty();
     console.log(comics);
-    for (let i = 0; i < comics.length; i++) {
+    for (let i = 0; i < numResults; i++) {
         console.log(comics[i]);
         if (comics[i] != undefined) {
             var comicRow = $("<tr>");
