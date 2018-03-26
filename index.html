@@ -1,17 +1,39 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
 
-    <title>Marvel API Search</title>
+    <!-- Bootstrap CDN-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <!--Ajax-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+
+    <!--Momentjs CDN (Just in case we need it, otherwise, delete)-->
+    <!--<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>-->
+
+    <!--Javascript (Just in case we need it, otherwise, delete)-->
+    <!--<script type="text/javascript" src="assets/app.js"></script>-->
+
+    <title>Marvel Comic API Search</title>
     <style>
         body,
         html {
-            background: url(https://i.ytimg.com/vi/0cUhJh-Dxk0/hq720.jpg) center center no-repeat;
+            background: url(https://i.ytimg.com/vi/VxKe9UbF2I8/maxresdefault.jpg) center center no-repeat;
             background-size: cover;
             height: 100%;
         }
@@ -32,92 +54,135 @@
         }
     </style>
 
+
 </head>
 
 <body>
-    <!--   <div class="jumbotron">
-        <div class="container">
-            <center>
-                <h2>Project #1: API Search</h2>
-                <h4>Andrew, Antoaneta, Jacinda, Kyle</h4>
-            </center>
-        </div>
-    </div>-->
-</body>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<form class="d-flex justify-content-center" id="center">
-    <ul>
-        <li>
-            <div class="form-row">
-                <div class="col-md-12 mb-3">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-            </div>
-
-        </li>
-        <li>
-            <div class="form-row align-items-center">
-                <div class="col-auto my-1">
-                    <label class="mr-sm-2 text-primary" for="inlineFormCustomSelect">Search By:</label>
-                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                        <option selected>Choose...</option>
-                        <option value="1">Character</option>
-                        <option value="2">Issue</option>
-                        <option value="3">Title</option>
-                        <option value="4">Year</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-row align-items-center">
-                <div class="col-auto my-3">
-                    <button type="submit" class="btn btn-danger">Search</button>
-                </div>
-            </div>
-            </div>
-
-        </li>
-    </ul>
 
 
-    <div class="col-auto my-2">
-        <div class="custom-control custom-checkbox mr-sm-2">
-            <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-            <label class="custom-control-label text-primary" for="customControlAutosizing">Top 5 Searches</label>
+    <div class="container">
+        <br>
+        <!-- Jumbotron Title -->
+        <div class="jumbotron bg-danger text-white" ;>
+
+            <h1 class="text-center">Marvel Logo Goes Here</h1>
+            <h5 class="text-center"></h5>
         </div>
     </div>
+
     </div>
+    </div>
+    <!--Search Form-->
 
 
+    <!--This is where the results will go.  Eventually, it will be created by JQuery, but
+                        just used html to create the skeleton for now.-->
+    <div class="container">
 
-    <div class="col-auto my-2">
-        <div class="custom-control custom-checkbox mr-sm-2">
-            <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-            <label class="custom-control-label text-primary" for="customControlAutosizing">Top 10 Searches</label>
+        <div class="panel-body">
+
+            <div class="panel-heading p-3 mb-4 bg-danger text-white">
+                <h6 class="panel-title ">
+                    <b>Cover Illustration</b>
+                </h6>
+            </div>
+            <div id="image">
+                <a href="https://placeholder.com">
+                    <img src="http://via.placeholder.com/450x550">
+
+                </a>
+
+                <p>Here is a place to write the copyright info for the image if we choose.</p>
+            </div>
+
         </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading p-3 mb-2 bg-danger text-white">
+                        <h6 class="panel-title">
+                            <b>Search Results</b>
+                        </h6>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <span id="Character Name">Character Name</span>
+                                </th>
+                                <th>
+                                    <span id="Issue #">Issue #</span>
+                                </th>
+                                <th>
+                                    <span id="Title"></span>Title</th>
+                                <th>
+                                    <span id="Year"></span> Year</th>
+                                <th>
+                                    <span id="Own"></span>Own Issue</th>
+                                <th>
+                                    <span id="Want"></span>Want Issue</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span id="Data-Name"></span>
+                                </td>
+                                <td>
+                                    <span id="Data-Issue"></span>
+                                </td>
+                                <td>
+                                    <span id="Data-Title"></span>
+                                </td>
+                                <td>
+                                    <span id="Data-Year"></span>
+                                </td>
+                                <td>
+
+                                    <span id="Data-OwnCheck">
+                                        <div class="form-check">
+                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                        </div>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span id="Data-WantCheck">
+                                        <div class="form-check">
+                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option2" aria-label="...">
+                                        </div>
+                                    </span>
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <span id="Synopsis">Synopsis</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span id="Data-synopsis">
+                                        <p>
+                                            Here is where the synopsis will go.
+                                        </p>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                </div>
+            </div>
+        </div>
+
     </div>
+
     </div>
     <!--Dropdown menu for Eventbrite?
     <form>
@@ -136,16 +201,12 @@
     <br>
     <br>-->
 
-    <div class="col-auto my-2">
-        <div class="custom-control custom-checkbox mr-sm-2">
-            <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-            <label class="custom-control-label text-primary" for="customControlAutosizing">Top 20 Searches</label>
-        </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    <div class="fixed-bottom" style="color:rgb(247, 54, 6)">Marvel Comics &copy; 2018 </div>
+    <!-- jQuery JS -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+
+    <body>
+
     </body>
+
 
 </html>
