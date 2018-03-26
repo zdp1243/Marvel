@@ -13,6 +13,7 @@ var database = firebase.database();
 
 $(document).ready(function () {
 
+    $('.zoo-item').ZooMove();
     //Submits search type, the input to be searched, and the number of desired results to selected search function on #search-button click
     $("#search-button").on("click", function (event) {
 
